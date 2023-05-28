@@ -42,7 +42,7 @@ export const Register = ({ navigate }: any) => {
             Registrar
           </Button>
           <span>
-            Já possui uma conta? <Link to={"/"}>registrar-se</Link>
+            Já possui uma conta? <Link to={"/"}>login</Link>
           </span>
         </StyledContainerButton>
       </Form>
