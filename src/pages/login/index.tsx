@@ -11,8 +11,8 @@ export const Login = () => {
         <header>
           <h3>Login</h3>
         </header>
-        <Input label="Email" placeholder={"email"} />
-        <Input label={"Password"} placeholder={"password"} />
+        <Input label="Email" placeholder={"Digite seu email..."} type={"email"} />
+        <Input label={"Password"} placeholder={"Digite sua senha..."} type={"password"} />
         <StyledContainerButton>
           <Button buttonVariation={"Login"} type={"submit"}>
             Login

@@ -11,5 +11,6 @@ export const StyledInput = styled.div`
     padding-left: 5px;
     border: none;
     
+    
   }
 `;
