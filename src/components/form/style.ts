@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
-  padding: 10px;
+  padding: 15px;
   height: auto;
   width: 450px;
   background-color: var(--color-white);

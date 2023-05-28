@@ -10,7 +10,13 @@ export const StyledInput = styled.div`
     border-radius: var(--radius-2);
     padding-left: 5px;
     border: none;
-    
-    
+  }
+
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 `;
