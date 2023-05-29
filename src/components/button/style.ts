@@ -83,6 +83,50 @@ export const StyledButton = styled.button<iStyledButtonProps>`
             background-color: #a4161a;
           }
         `;
+      case "closeModal":
+        return css`
+          font-size: 15px;
+          color: var(--color-white);
+          background-color: var(--color-primary);
+          font-size: 20px;
+          border: none;
+        `;
+      case "createContact":
+        return css`
+          font-size: 15px;
+          color: var(--color-gray);
+          background-color: var(--color-secondary);
+          border-radius: var(--radius-1);
+          padding: 5px;
+          font-size: 20px;
+          border: none;
+        `;
+      case "closeModalHigthButton":
+        return css`
+          font-size: 15px;
+          border-radius: var(--radius-1);
+          padding: 5px;
+          font-size: 20px;
+          border: none;
+        `;
+      case "buttonDanger":
+        return css`
+          color: var(--color-white);
+          background-color: var(--color-danger);
+          font-size: 15px;
+          border-radius: var(--radius-1);
+          width: 200px;
+          font-size: 20px;
+          border: none;
+        `;
+      case "buttonCancelDelete":
+        return css`
+          font-size: 15px;
+          border-radius: var(--radius-1);
+          width: 200px;
+          font-size: 20px;
+          border: none;
+        `;
     }
   }}
 `;

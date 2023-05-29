@@ -4,7 +4,7 @@ export const StyledForm = styled.form`
   padding: 15px;
   height: auto;
   width: 450px;
-  background-color: var(--color-white);
+  color: var(--color-gray);
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-2);
@@ -12,6 +12,18 @@ export const StyledForm = styled.form`
   gap: 20px;
   label {
     color: var(--color-white);
+  }
+  animation: animateModal 0.4s;
+
+  @keyframes animateModal {
+    0% {
+      transform: translateY(-10%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY();
+      opacity: 1;
+    }
   }
 
   header {
@@ -24,5 +36,10 @@ export const StyledForm = styled.form`
       font-size: 25px;
       color: var(--color-white);
     }
+  }
+
+  .containerButton {
+    display: flex;
+    justify-content: space-between;
   }
 `;
