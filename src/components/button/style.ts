@@ -20,6 +20,69 @@ export const StyledButton = styled.button<iStyledButtonProps>`
             background-colo;
         }
         `;
+      case "addContact":
+        return css`
+          background-color: var(--color-primary);
+          color: var(--color-white);
+          border-radius: var(--radius-1);
+          padding: 10px;
+          font-size: 15px;
+          border: none;
+        `;
+      case "editContact":
+        return css`
+          background-color: var(--color-primary);
+          color: var(--color-white);
+          border-radius: var(--radius-1);
+          padding: 5px;
+          font-size: 15px;
+          border: none;
+        `;
+      case "deleteContact":
+        return css`
+          background-color: var(--color-danger);
+          color: var(--color-white);
+          border-radius: var(--radius-1);
+          padding: 5px;
+          font-size: 15px;
+          border: none;
+          :hover {
+            background-color: #a4161a;
+          }
+        `;
+      case "editProfile":
+        return css`
+          background-color: var(--color-primary);
+          width: 100%;
+          color: var(--color-white);
+          border-radius: var(--radius-1);
+          padding: 5px;
+          font-size: 15px;
+          border: none;
+        `;
+      case "logoutProfile":
+        return css`
+          background-color: var(--color-primary);
+          color: var(--color-white);
+          border-radius: var(--radius-1);
+          padding: 5px;
+          font-size: 15px;
+          border: none;
+        `;
+
+      case "deleteProfile":
+        return css`
+          background-color: var(--color-danger);
+          color: var(--color-white);
+          border-radius: var(--radius-1);
+          width: 100%;
+          padding: 5px;
+          font-size: 15px;
+          border: none;
+          :hover {
+            background-color: #a4161a;
+          }
+        `;
     }
   }}
 `;

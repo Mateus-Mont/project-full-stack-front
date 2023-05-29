@@ -32,6 +32,7 @@ button{
     --color-background-modal:#3333;
 
     --color-failed:#E60000;
+    --color-danger: #660708;
     --color-sucess:#168821;
 
     --radius-1:8px;
