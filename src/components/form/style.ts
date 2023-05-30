@@ -42,4 +42,12 @@ export const StyledForm = styled.form`
     display: flex;
     justify-content: space-between;
   }
+
+  .errorMessage {
+    background-color: var(--color-danger);
+    font-size: 12px;
+    padding: 1px;
+    width: max-content;
+    padding: -10;
+  }
 `;

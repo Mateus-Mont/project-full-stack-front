@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { StyledInput } from "./style";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 interface iInputProps {
   placeholder: string;
@@ -7,13 +8,26 @@ interface iInputProps {
   label: string;
   hidden?: boolean;
   type: string;
+  register?: UseFormRegisterReturn;
 }
 
-export const Input = ({ placeholder, label, hidden, type }: iInputProps) => {
+export const Input = ({
+  placeholder,
+  label,
+  hidden,
+  type,
+  register,
+  onChange,
+}: iInputProps) => {
   return (
     <StyledInput placeholder={placeholder}>
       <label hidden={hidden}>{label}</label>
-      <input placeholder={placeholder} type={type} />
+      <input
+        placeholder={placeholder}
+        type={type}
+        {...register}
+        onChange={onChange}
+      />
     </StyledInput>
   );
 };

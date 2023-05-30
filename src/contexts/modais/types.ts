@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 
-export interface iCreateContactProps {
+export interface iModalProps {
   openModalCreateContact: boolean;
   setModalCreateContact: React.Dispatch<SetStateAction<boolean>>;
   modalCreateContact: () => void;

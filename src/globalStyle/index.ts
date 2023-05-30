@@ -1,12 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+@import 'react-toastify/dist/ReactToastify.css';
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family:  "Nunito",  sans-serif
 }
+
 
 li{
     list-style: none;
@@ -21,6 +23,9 @@ button{
 }
 
 
+
+/* Exemplo de estilo personalizado */
+
 :root{
     --color-primary:#022b3a;
     --color-secondary:#1f7a8c;
@@ -31,7 +36,7 @@ button{
 
     --color-background-modal:#3333;
 
-    --color-failed:#E60000;
+    --color-failed:#ed1b24;
     --color-danger: #660708;
     --color-sucess:#168821;
 

@@ -1,9 +1,7 @@
 import { useState, createContext } from "react";
-import { iCreateContactProps, iModalProviderProps } from "./types";
+import { iModalProps, iModalProviderProps } from "./types";
 
-type NewType = iCreateContactProps;
-
-export const ModalContext = createContext({} as NewType);
+export const ModalContext = createContext({} as iModalProps);
 
 export const ModalProvider = ({ children }: iModalProviderProps) => {
   const [openModalCreateContact, setModalCreateContact] = useState(false);
@@ -12,8 +10,6 @@ export const ModalProvider = ({ children }: iModalProviderProps) => {
 
   const [openModalEditProfile, setModalEditProfile] = useState(false);
   const [openModalDeleteProfile, setModalDeleteProfile] = useState(false);
-
-  //   const { openModalLogout, setModalLogout } = useState(false);
 
   const modalCreateContact = () => {
     return setModalCreateContact(true);

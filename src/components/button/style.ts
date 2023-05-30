@@ -118,6 +118,9 @@ export const StyledButton = styled.button<iStyledButtonProps>`
           width: 200px;
           font-size: 20px;
           border: none;
+          :hover {
+            background-color: #a4161a;
+          }
         `;
       case "buttonCancelDelete":
         return css`

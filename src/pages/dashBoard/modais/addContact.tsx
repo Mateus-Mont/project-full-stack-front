@@ -3,7 +3,6 @@ import { Button } from "../../../components/button";
 import { Form } from "../../../components/form";
 import { Input } from "../../../components/input";
 import { MainModal } from "../../../components/mainModal";
-import { iCreateContactProps } from "./types";
 import { ModalContext } from "../../../contexts/modais";
 
 export const AddContactModal = () => {
@@ -27,6 +26,7 @@ export const AddContactModal = () => {
           label={"Nome completo"}
           type={"text"}
         />
+        <span className="errorMessage">teste de cor pra ver se fica bom</span>
         <Input
           placeholder={"Digite o email do contato..."}
           label={"Email"}
