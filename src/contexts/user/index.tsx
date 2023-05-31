@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext,useState } from "react";
 import { api } from "../../services";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
@@ -8,6 +8,7 @@ import {
   iFormRegisterUser,
   iUserProviderProps,
   iUserProviderValue,
+  iUserState,
 } from "./types";
 import jwtDecode from "jwt-decode";
 
@@ -16,6 +17,9 @@ export const UserContext = createContext({} as iUserProviderValue);
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [emailExists, setEmailExists] = useState("");
   const [notAuthorized, setNotAuthorized] = useState("");
+
+  const [userData, setUserData] = useState<null | iUserState>(null);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -71,6 +75,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setNotAuthorized("Email ou senha inválido");
       }
     }
+
   };
 
   const submitLogin = async (data: iFormLogin) => {
@@ -82,6 +87,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     };
     loginUser(login);
   };
+
+  
+
 
   return (
     <UserContext.Provider
@@ -95,6 +103,12 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setNotAuthorized,
 
         submitLogin,
+
+        userData,
+        setUserData,
+        loading,
+
+        setLoading
       }}
     >
       {children}

@@ -24,6 +24,13 @@ export const DashBoard = ({ navigate }: any) => {
     openModalDeleteProfile,
   } = useContext(ModalContext);
 
+  const token = localStorage.getItem("@TOKEN");
+
+  if (!token) {
+    return navigate("/");
+  }
+
+
   return (
     <StyledMainDashBoard>
       {openModalCreateContact && <AddContactModal />}
@@ -43,7 +50,6 @@ export const DashBoard = ({ navigate }: any) => {
           </Button>
         </header>
         <StyledContainerList>
-          <List />
           <List />
         </StyledContainerList>
       </section>

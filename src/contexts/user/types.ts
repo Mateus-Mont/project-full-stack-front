@@ -10,6 +10,12 @@ export interface iUserProviderValue {
 
   notAuthorized: string;
   setNotAuthorized: React.Dispatch<SetStateAction<string>>;
+
+  userData: iUserState | null;
+  setUserData: React.Dispatch<SetStateAction<iUserState | null>>;
+
+  loading: boolean;
+  setLoading: React.Dispatch<SetStateAction<boolean>>
 }
 
 export interface iUserProviderProps {
@@ -27,4 +33,25 @@ export interface iFormRegisterUser {
 export interface iFormLogin {
   email: string;
   password: string;
+}
+
+export interface iContactsUser {
+  id: string;
+  name: string;
+  tel: string;
+  userId: string;
+  created_at: string;
+  email: string;
+}
+
+export interface iUserState {
+  map(
+    arg0: (contact: any, index: any) => import("react/jsx-runtime").JSX.Element
+  ): React.ReactNode;
+  id: string;
+  name: string;
+  email: string;
+  tel: string;
+  created_at: string;
+  contacts: iContactsUser[];
 }

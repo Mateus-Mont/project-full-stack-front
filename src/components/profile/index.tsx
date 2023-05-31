@@ -3,16 +3,29 @@ import { Button } from "../button";
 import { StyledContainProfile } from "./style";
 import { useContext } from "react";
 import { ModalContext } from "../../contexts/modais";
+import { UserContext } from "../../contexts/user";
+import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 export const Profile = () => {
   const { modalEditProfile, modalDeleteProfile } = useContext(ModalContext);
+  const { userData } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const exitAccount = () => {
+    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERID");
+    navigate("/");
+  };
 
   return (
     <StyledContainProfile>
-      <p>Nome: Mateus Monteiro</p>
-      <p>Mateus@gmail.com</p>
-      <p>Contato: 999903859</p>
-      <p>Criado em:</p>
+      <p>Nome: {userData?.name}</p>
+      <p>Email: {userData?.email}</p>
+      <p>tel: {userData?.tel}</p>
+      <p>
+        Criado em: {moment(userData?.created_at).format("DD/MM/YYYY HH:mm:ss")}
+      </p>
       <StyledContainerButtonProfile>
         <div>
           <Button
@@ -23,7 +36,11 @@ export const Profile = () => {
             Editar perfil
           </Button>
         </div>
-        <Button buttonVariation={"logoutProfile"} type={"button" } >
+        <Button
+          buttonVariation={"logoutProfile"}
+          type={"button"}
+          onClick={() => exitAccount()}
+        >
           Deslogar
         </Button>
         <Button
