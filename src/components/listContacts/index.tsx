@@ -53,8 +53,7 @@ export const List = () => {
             <p>Email: {contact.email}</p>
             <p>Celular: {contact.tel}</p>
             <p>
-              Registrado em:{" "}
-              {moment(contact.created_at).format("DD/MM/YYYY")}
+              Registrado em: {moment(contact.created_at).format("DD/MM/YYYY")}
             </p>
             <Button
               buttonVariation={"editContact"}

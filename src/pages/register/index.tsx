@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { iFormRegisterUser } from "../../contexts/user/types";
-import { registerUserSchema } from "./formSchema";
+import { registerUserSchema } from "../../schemas/registerUserSchema";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user";
 import { ToastContainer } from "react-toastify";

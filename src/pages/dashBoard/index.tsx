@@ -13,6 +13,7 @@ import { UpdateContactModal } from "./modais/updateContact";
 import { UpdateProfile } from "./modais/updateProfile";
 import { DeleteModalContact } from "./modais/deleteContact";
 import { DeleteProfileModal } from "./modais/deleteProfile";
+import { ToastContainer } from "react-toastify";
 
 export const DashBoard = ({ navigate }: any) => {
   const {
@@ -30,9 +31,9 @@ export const DashBoard = ({ navigate }: any) => {
     return navigate("/");
   }
 
-
   return (
     <StyledMainDashBoard>
+      <ToastContainer />
       {openModalCreateContact && <AddContactModal />}
       {openModalEditContact && <UpdateContactModal />}
       {openModalEditProfile && <UpdateProfile />}

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledListContacts = styled.li`
-  height: auto;
+  height: 200px;
   width: 36%;
   border-radius: var(--radius-2);
   background-color: var(--color-gray);

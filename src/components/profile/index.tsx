@@ -22,7 +22,7 @@ export const Profile = () => {
     <StyledContainProfile>
       <p>Nome: {userData?.name}</p>
       <p>Email: {userData?.email}</p>
-      <p>tel: {userData?.tel}</p>
+      <p>Tel: {userData?.tel}</p>
       <p>
         Criado em: {moment(userData?.created_at).format("DD/MM/YYYY HH:mm:ss")}
       </p>

@@ -15,7 +15,9 @@ export interface iUserProviderValue {
   setUserData: React.Dispatch<SetStateAction<iUserState | null>>;
 
   loading: boolean;
-  setLoading: React.Dispatch<SetStateAction<boolean>>
+  setLoading: React.Dispatch<SetStateAction<boolean>>;
+
+  submitContact: (data: iFormRegisterContact) => void;
 }
 
 export interface iUserProviderProps {
@@ -28,6 +30,12 @@ export interface iFormRegisterUser {
   password: string;
   tel: string;
   confirm_password?: string;
+}
+
+export interface iFormRegisterContact {
+  name: string;
+  email: string;
+  tel: string;
 }
 
 export interface iFormLogin {

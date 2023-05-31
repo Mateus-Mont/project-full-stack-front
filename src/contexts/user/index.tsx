@@ -1,20 +1,23 @@
-import { createContext,useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { api } from "../../services";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import {
   iFormLogin,
+  iFormRegisterContact,
   iFormRegisterUser,
   iUserProviderProps,
   iUserProviderValue,
   iUserState,
 } from "./types";
 import jwtDecode from "jwt-decode";
+import { ModalContext } from "../modais";
 
 export const UserContext = createContext({} as iUserProviderValue);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
+  const { setModalCreateContact } = useContext(ModalContext);
   const [emailExists, setEmailExists] = useState("");
   const [notAuthorized, setNotAuthorized] = useState("");
 
@@ -75,7 +78,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setNotAuthorized("Email ou senha inválido");
       }
     }
-
   };
 
   const submitLogin = async (data: iFormLogin) => {
@@ -88,8 +90,30 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     loginUser(login);
   };
 
-  
+  const createContact = async (formData: iFormRegisterContact) => {
+    const token = JSON.parse(localStorage.getItem("@TOKEN") || "");
+    try {
+      toast.success("Contato criado com sucesso");
+      setModalCreateContact(false);
+      await api.post<iFormRegisterContact>("/contacts/", formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error) {
+      const currentError = error as AxiosError;
+      console.log(currentError);
+    }
+  };
 
+  const submitContact = (data: iFormRegisterContact) => {
+    const { name, email, tel } = data;
+    const newContact = {
+      name: name,
+      email: email,
+      tel: tel,
+    };
+
+    createContact(newContact);
+  };
 
   return (
     <UserContext.Provider
@@ -108,7 +132,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setUserData,
         loading,
 
-        setLoading
+        setLoading,
+
+        submitContact,
       }}
     >
       {children}
