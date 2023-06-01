@@ -14,7 +14,7 @@ export const StyledMainDashBoard = styled.main`
   section {
     width: 60%;
     background-color: var(--color-white);
-    height: 100%;
+    height: 90%;
     background-color: var(--color-secondary);
     border-radius: var(--radius-2);
     padding-right: 30px;
@@ -31,7 +31,7 @@ export const StyledMainDashBoard = styled.main`
 `;
 
 export const StyledContainerList = styled.ul`
-  height: 500px;
+  height: 77%;
   width: 100%;
   padding: 30px;
   display: flex;
@@ -54,11 +54,11 @@ export const StyledContainerList = styled.ul`
 
 export const StyledContainerProfile = styled.div`
   width: 20%;
-  height: 360px;
+  height: 370px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   color: var(--color-gray);
   background-color: var(--color-secondary);
   border-radius: var(--radius-2);
