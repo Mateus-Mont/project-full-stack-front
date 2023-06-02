@@ -17,7 +17,7 @@ import { ModalContext } from "../modais";
 export const UserContext = createContext({} as iUserProviderValue);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
-  const { setModalCreateContact, setModalEditProfile } =
+  const { setModalCreateContact, setModalEditProfile, setModalDeleteProfile } =
     useContext(ModalContext);
   const [emailExists, setEmailExists] = useState("");
   const [updateEmailExists, setUpdateEmailExists] = useState("");
@@ -157,6 +157,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       });
       localStorage.removeItem("@TOKEN");
       localStorage.removeItem("@USERID");
+      setModalDeleteProfile(false);
+      navigate("/deleteSucess");
     } catch (error) {}
   };
   return (
