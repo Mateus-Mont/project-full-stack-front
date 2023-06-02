@@ -58,7 +58,7 @@ export const List = () => {
             <Button
               buttonVariation={"editContact"}
               type={"button"}
-              onClick={() => modalEditContact()}
+              onClick={() => modalEditContact(contact)}
             >
               Editar contato
             </Button>

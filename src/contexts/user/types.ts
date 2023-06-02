@@ -26,6 +26,10 @@ export interface iUserProviderValue {
   setUpdateEmailExists: React.Dispatch<SetStateAction<string>>;
 
   submitDeleteProfile: () => void;
+
+  submitUpdateContact: (data: iFormRegisterContact) => void;
+  setIdContact: React.Dispatch<SetStateAction<string | undefined>>;
+  idContact: string | undefined;
 }
 
 export interface iUserProviderProps {

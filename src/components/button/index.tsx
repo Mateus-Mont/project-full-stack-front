@@ -5,6 +5,7 @@ interface iButtonProps {
   type: "button" | "submit" | "reset";
   onClick?: () => void;
   buttonVariation?: string;
+  id?: any;
 }
 
 export const Button = ({

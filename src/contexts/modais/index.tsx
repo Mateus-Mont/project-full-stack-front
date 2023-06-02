@@ -1,5 +1,6 @@
 import { useState, createContext } from "react";
 import { iModalProps, iModalProviderProps } from "./types";
+import { iContactsUser } from "../user/types";
 
 export const ModalContext = createContext({} as iModalProps);
 
@@ -11,10 +12,13 @@ export const ModalProvider = ({ children }: iModalProviderProps) => {
   const [openModalEditProfile, setModalEditProfile] = useState(false);
   const [openModalDeleteProfile, setModalDeleteProfile] = useState(false);
 
+  const [contacts, setContacts] = useState<iContactsUser>();
+
   const modalCreateContact = () => {
     return setModalCreateContact(true);
   };
-  const modalEditContact = () => {
+  const modalEditContact = (contact: iContactsUser) => {
+    setContacts(contact);
     return setModalEditContact(true);
   };
 
@@ -51,6 +55,8 @@ export const ModalProvider = ({ children }: iModalProviderProps) => {
         openModalDeleteProfile,
         modalDeleteProfile,
         setModalDeleteProfile,
+
+        contacts
       }}
     >
       {children}

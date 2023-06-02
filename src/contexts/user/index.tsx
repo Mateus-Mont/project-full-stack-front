@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
@@ -17,11 +17,17 @@ import { ModalContext } from "../modais";
 export const UserContext = createContext({} as iUserProviderValue);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
-  const { setModalCreateContact, setModalEditProfile, setModalDeleteProfile } =
-    useContext(ModalContext);
+  const {
+    setModalCreateContact,
+    setModalEditProfile,
+    setModalDeleteProfile,
+    setModalEditContact,
+  } = useContext(ModalContext);
   const [emailExists, setEmailExists] = useState("");
   const [updateEmailExists, setUpdateEmailExists] = useState("");
   const [notAuthorized, setNotAuthorized] = useState("");
+
+  const [idContact, setIdContact] = useState<string | undefined>("");
 
   const [userData, setUserData] = useState<null | iUserState>(null);
   const [loading, setLoading] = useState(true);
@@ -161,6 +167,30 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       navigate("/deleteSucess");
     } catch (error) {}
   };
+
+  const updateContact = async (formData: iFormRegisterContact) => {
+    const token = JSON.parse(localStorage.getItem("@TOKEN") || "");
+
+    try {
+      api.patch(`/contacts/${idContact}`, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setModalEditContact(false);
+      toast.success("Contato editado com sucesso");
+    } catch (error) {}
+  };
+
+  const submitUpdateContact = (data: iFormRegisterContact) => {
+    const { name, email, tel } = data;
+    const updateData = {
+      name: name,
+      email: email,
+      tel: tel,
+    };
+
+    updateContact(updateData);
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -189,6 +219,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setUpdateEmailExists,
 
         submitDeleteProfile,
+
+        submitUpdateContact,
+        setIdContact,
+        idContact,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
 import React, { SetStateAction } from "react";
+import { iContactsUser } from "../user/types";
 
 export interface iModalProps {
   openModalCreateContact: boolean;
@@ -6,7 +7,8 @@ export interface iModalProps {
   modalCreateContact: () => void;
 
   openModalEditContact: boolean;
-  modalEditContact: () => void;
+  modalEditContact: (contact: iContactsUser) => void;
+  contacts: iContactsUser | undefined;
   setModalEditContact: React.Dispatch<SetStateAction<boolean>>;
 
   openModalEditProfile: boolean;
