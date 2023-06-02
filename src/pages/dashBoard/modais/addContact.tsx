@@ -19,6 +19,7 @@ export const AddContactModal = () => {
     register,
     formState: { errors },
   } = useForm<iFormRegisterContact>({
+    mode: "onBlur",
     resolver: yupResolver(schemaContact),
   });
 
@@ -54,7 +55,7 @@ export const AddContactModal = () => {
           <span className="errorMessage">{errors.email.message}</span>
         )}
         <Input
-          placeholder={"Digite o numero do contato..."}
+          placeholder={"Digite o número do contato..."}
           label={"Telefone"}
           type={"number"}
           register={register("tel")}

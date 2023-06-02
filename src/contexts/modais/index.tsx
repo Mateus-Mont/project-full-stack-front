@@ -13,6 +13,7 @@ export const ModalProvider = ({ children }: iModalProviderProps) => {
   const [openModalDeleteProfile, setModalDeleteProfile] = useState(false);
 
   const [contacts, setContacts] = useState<iContactsUser>();
+  const [idDeleteContact, setIdContact] = useState("");
 
   const modalCreateContact = () => {
     return setModalCreateContact(true);
@@ -26,7 +27,8 @@ export const ModalProvider = ({ children }: iModalProviderProps) => {
     return setModalEditProfile(true);
   };
 
-  const modalDeleteContact = () => {
+  const modalDeleteContact = (contact: string) => {
+    setIdContact(contact);
     return setModalDeleteContact(true);
   };
 
@@ -56,7 +58,9 @@ export const ModalProvider = ({ children }: iModalProviderProps) => {
         modalDeleteProfile,
         setModalDeleteProfile,
 
-        contacts
+        contacts,
+
+        idDeleteContact
       }}
     >
       {children}

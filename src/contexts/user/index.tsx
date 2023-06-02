@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { api } from "../../services";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
@@ -22,13 +22,14 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     setModalEditProfile,
     setModalDeleteProfile,
     setModalEditContact,
+    idDeleteContact,
+    setModalDeleteContact,
   } = useContext(ModalContext);
   const [emailExists, setEmailExists] = useState("");
   const [updateEmailExists, setUpdateEmailExists] = useState("");
   const [notAuthorized, setNotAuthorized] = useState("");
 
   const [idContact, setIdContact] = useState<string | undefined>("");
-
   const [userData, setUserData] = useState<null | iUserState>(null);
   const [loading, setLoading] = useState(true);
 
@@ -37,7 +38,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const createUser = async (formData: iFormRegisterUser) => {
     try {
       await api.post<iFormRegisterUser>("/users", formData);
-
       toast.success("Registro feito com sucesso!");
       setTimeout(() => {
         navigate("/");
@@ -101,14 +101,13 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const createContact = async (formData: iFormRegisterContact) => {
     const token = JSON.parse(localStorage.getItem("@TOKEN") || "");
     try {
-      toast.success("Contato criado com sucesso");
-      setModalCreateContact(false);
       await api.post<iFormRegisterContact>("/contacts/", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      setModalCreateContact(false);
+      toast.success("Contato registrado com sucesso!");
     } catch (error) {
-      const currentError = error as AxiosError;
-      console.log(currentError);
+     error as AxiosError;
     }
   };
 
@@ -176,7 +175,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       setModalEditContact(false);
-      toast.success("Contato editado com sucesso");
+      toast.success("Contato editado com sucesso!");
     } catch (error) {}
   };
 
@@ -187,8 +186,18 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       email: email,
       tel: tel,
     };
-
     updateContact(updateData);
+  };
+
+  const submiteDeleteContact = async () => {
+    const token = JSON.parse(localStorage.getItem("@TOKEN") || "");
+    try {
+      api.delete(`/contacts/${idDeleteContact}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setModalDeleteContact(false);
+      toast.success("Contato excluido com sucesso!");
+    } catch (error) {}
   };
 
   return (
@@ -223,6 +232,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         submitUpdateContact,
         setIdContact,
         idContact,
+
+        submiteDeleteContact,
       }}
     >
       {children}

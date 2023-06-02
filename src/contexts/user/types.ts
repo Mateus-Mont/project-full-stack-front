@@ -30,6 +30,8 @@ export interface iUserProviderValue {
   submitUpdateContact: (data: iFormRegisterContact) => void;
   setIdContact: React.Dispatch<SetStateAction<string | undefined>>;
   idContact: string | undefined;
+
+  submiteDeleteContact: () => void;
 }
 
 export interface iUserProviderProps {

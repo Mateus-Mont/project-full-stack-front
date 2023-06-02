@@ -16,12 +16,14 @@ export interface iModalProps {
   setModalEditProfile: React.Dispatch<SetStateAction<boolean>>;
 
   openModalDeleteContact: boolean;
-  modalDeleteContact: () => void;
+  modalDeleteContact: (idContact: string) => void;
   setModalDeleteContact: React.Dispatch<SetStateAction<boolean>>;
 
   openModalDeleteProfile: boolean;
   modalDeleteProfile: () => void;
   setModalDeleteProfile: React.Dispatch<SetStateAction<boolean>>;
+
+  idDeleteContact: string;
 }
 
 export interface iModalProviderProps {

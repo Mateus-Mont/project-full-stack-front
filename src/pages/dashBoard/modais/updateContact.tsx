@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { Button } from "../../../components/button";
 import { Form } from "../../../components/form";
 import { Input } from "../../../components/input";
@@ -19,6 +19,7 @@ export const UpdateContactModal = () => {
     register,
     formState: { errors },
   } = useForm<iFormRegisterContact>({
+    mode : "onBlur",
     resolver: yupResolver(schemaContact),
   });
 
@@ -60,7 +61,7 @@ export const UpdateContactModal = () => {
           <span className="errorMessage">{errors.email.message}</span>
         )}
         <Input
-          placeholder={"Digite o numero do contato..."}
+          placeholder={"Digite o número do contato..."}
           label={"Telefone"}
           type={"number"}
           defaultValue={contacts?.tel}

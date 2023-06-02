@@ -65,7 +65,7 @@ export const List = () => {
             <Button
               buttonVariation={"deleteContact"}
               type={"button"}
-              onClick={() => modalDeleteContact()}
+              onClick={() => modalDeleteContact(contact.id)}
             >
               Excluir contato
             </Button>
