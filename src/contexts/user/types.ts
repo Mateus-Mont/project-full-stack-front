@@ -24,6 +24,8 @@ export interface iUserProviderValue {
 
   updateEmailExists: string;
   setUpdateEmailExists: React.Dispatch<SetStateAction<string>>;
+
+  submitDeleteProfile: () => void;
 }
 
 export interface iUserProviderProps {

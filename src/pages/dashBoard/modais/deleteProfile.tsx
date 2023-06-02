@@ -3,9 +3,11 @@ import { Button } from "../../../components/button";
 import { Form } from "../../../components/form";
 import { MainModal } from "../../../components/mainModal";
 import { ModalContext } from "../../../contexts/modais";
+import { UserContext } from "../../../contexts/user";
 
 export const DeleteProfileModal = () => {
   const { setModalDeleteProfile } = useContext(ModalContext);
+  const { submitDeleteProfile } = useContext(UserContext);
 
   return (
     <MainModal>
@@ -19,7 +21,11 @@ export const DeleteProfileModal = () => {
           >
             Cancelar
           </Button>
-          <Button buttonVariation={"buttonDanger"} type={"submit"}>
+          <Button
+            buttonVariation={"buttonDanger"}
+            type={"button"}
+            onClick={() => submitDeleteProfile()}
+          >
             Excluir
           </Button>
         </div>

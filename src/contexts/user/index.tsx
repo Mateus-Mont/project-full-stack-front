@@ -147,6 +147,18 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
     updateUser(updatedUserData);
   };
+
+  const submitDeleteProfile = async () => {
+    const token = JSON.parse(localStorage.getItem("@TOKEN") || "");
+    const id = JSON.parse(localStorage.getItem("@USERID") || "");
+    try {
+      await api.delete(`/users/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      localStorage.removeItem("@TOKEN");
+      localStorage.removeItem("@USERID");
+    } catch (error) {}
+  };
   return (
     <UserContext.Provider
       value={{
@@ -173,6 +185,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
         updateEmailExists,
         setUpdateEmailExists,
+
+        submitDeleteProfile,
       }}
     >
       {children}
