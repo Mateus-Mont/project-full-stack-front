@@ -18,6 +18,12 @@ export interface iUserProviderValue {
   setLoading: React.Dispatch<SetStateAction<boolean>>;
 
   submitContact: (data: iFormRegisterContact) => void;
+
+  submitUpdateUser: (data: iFormRegisterUser) => void;
+  updateUser: (data: iFormRegisterUser) => void;
+
+  updateEmailExists: string;
+  setUpdateEmailExists: React.Dispatch<SetStateAction<string>>;
 }
 
 export interface iUserProviderProps {

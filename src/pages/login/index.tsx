@@ -21,6 +21,7 @@ export const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<iFormLogin>({
+    mode: "onSubmit",
     resolver: yupResolver(formSchema),
   });
 

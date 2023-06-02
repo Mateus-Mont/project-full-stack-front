@@ -9,6 +9,7 @@ interface iInputProps {
   hidden?: boolean;
   type: string;
   register?: UseFormRegisterReturn;
+  defaultValue?: string | undefined;
 }
 
 export const Input = ({
@@ -18,6 +19,7 @@ export const Input = ({
   type,
   register,
   onChange,
+  defaultValue,
 }: iInputProps) => {
   return (
     <StyledInput placeholder={placeholder}>
@@ -27,6 +29,7 @@ export const Input = ({
         type={type}
         {...register}
         onChange={onChange}
+        defaultValue={defaultValue}
       />
     </StyledInput>
   );

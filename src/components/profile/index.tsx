@@ -24,7 +24,7 @@ export const Profile = () => {
       <p>Email: {userData?.email}</p>
       <p>Tel: {userData?.tel}</p>
       <p>
-        Criado em: {moment(userData?.created_at).format("DD/MM/YYYY HH:mm:ss")}
+        Criado em: {moment(userData?.created_at).format("DD/MM/YYYY")}
       </p>
       <StyledContainerButtonProfile>
         <div>

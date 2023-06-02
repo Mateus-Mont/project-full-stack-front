@@ -17,8 +17,10 @@ import { ModalContext } from "../modais";
 export const UserContext = createContext({} as iUserProviderValue);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
-  const { setModalCreateContact } = useContext(ModalContext);
+  const { setModalCreateContact, setModalEditProfile } =
+    useContext(ModalContext);
   const [emailExists, setEmailExists] = useState("");
+  const [updateEmailExists, setUpdateEmailExists] = useState("");
   const [notAuthorized, setNotAuthorized] = useState("");
 
   const [userData, setUserData] = useState<null | iUserState>(null);
@@ -115,6 +117,36 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     createContact(newContact);
   };
 
+  const updateUser = async (formData: iFormRegisterUser) => {
+    const token = JSON.parse(localStorage.getItem("@TOKEN") || "");
+    const id = JSON.parse(localStorage.getItem("@USERID") || "");
+
+    try {
+      await api.patch(`/users/${id}`, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setModalEditProfile(false);
+      toast.success("Perfil editado com sucesso!");
+    } catch (error) {
+      const currentError = error as AxiosError;
+      console.log(currentError.message);
+      if (currentError.message === "Request failed with status code 409") {
+        setUpdateEmailExists("Email em uso");
+      }
+    }
+  };
+
+  const submitUpdateUser = (data: iFormRegisterUser) => {
+    const { name, email, tel, password } = data;
+    const updatedUserData = {
+      name: name,
+      email: email,
+      tel: tel,
+      password: password,
+    };
+
+    updateUser(updatedUserData);
+  };
   return (
     <UserContext.Provider
       value={{
@@ -135,6 +167,12 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setLoading,
 
         submitContact,
+
+        submitUpdateUser,
+        updateUser,
+
+        updateEmailExists,
+        setUpdateEmailExists,
       }}
     >
       {children}
