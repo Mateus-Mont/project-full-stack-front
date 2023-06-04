@@ -25,4 +25,4 @@ Abra o terminal e rode os seguintes comandos:
 
 ## Link do repositório back-end do projeto
 
-Clique [aqui](https://github.com/CarlosGalleth/fullstack-project-back)
+Clique [aqui](https://github.com/mateus-mont/project-full-stack-back)
