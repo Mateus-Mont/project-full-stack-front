@@ -1,4 +1,4 @@
-# Projeto Full-Stack com o objetivo de realizar cadastro e login de usuário e cadastro de contato na lista de contatos de cada usuário
+# Projeto Full-Stack com o objetivo de cadastrar clientes de usuário
 
 ## Inicializando o projeto
 
